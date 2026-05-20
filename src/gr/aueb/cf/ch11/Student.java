@@ -1,5 +1,10 @@
 package gr.aueb.cf.ch11;
 
+/**
+ * Java Bean - POJO (Plain Old Java Object)
+ * Απλή data κλάση με τρία πεδία (fields)
+ * Απλών και σύνθετων τύπων
+ */
 public class Student {
     private int id;
     private String firstName;
