@@ -34,6 +34,8 @@ public class Main {
         System.out.println("Charlie First Name:" + student.getFirstName());
         System.out.println("Charlie Last Name:" + student.getLastName());
 
+        System.out.println("Student Count: " + Student.getStudentCount());
+
 //        // Set values
 //        alice.id = 1;
 //        alice.firstName = "Alice";
