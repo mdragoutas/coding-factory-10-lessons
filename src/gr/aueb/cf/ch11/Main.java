@@ -3,9 +3,12 @@ package gr.aueb.cf.ch11;
 public class Main {
 
     public static void main(String[] args) {
-        Student alice = new Student();  // Default constructor
+        Student alice = new Student();                          // Default constructor
         Student bob = new Student();
         Student student = new Student();
+
+        Student student2 = new Student(4, "George","Adams");    // Overloaded constructor
+        Student student3 = new Student(5, "Willem", "Defoe");
 
         alice.setId(1);
         alice.setFirstName("Alice");
