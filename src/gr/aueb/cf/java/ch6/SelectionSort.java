@@ -1,0 +1,37 @@
+package gr.aueb.cf.java.ch6;
+
+/**
+ * Ταξινομεί τα στοιχεία ενός πίνακα ανά τιμή
+ */
+public class SelectionSort {
+
+    public static void main(String[] args) {
+
+    }
+
+    public static int[] selectionSort(int[] arr) {
+        int minPosition;
+        int minValue;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            minPosition = i;
+            minValue = arr[i];
+
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < minValue) {
+                    minPosition = j;
+                    minValue = j;
+                }
+            }
+
+            swap(arr, minPosition, i);
+        }
+        return arr;
+    }
+
+    public static void swap(int[] arr, int i ,int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+}
