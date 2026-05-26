@@ -25,7 +25,7 @@ public class Point {
         x += 10;
     }
 
-    private void reset() {
+    protected void reset() {
         x = 0;
     }
 }
