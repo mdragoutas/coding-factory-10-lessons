@@ -21,7 +21,7 @@ public class Point {
         x += 1;
     }
 
-    public void movePlusTen() {
+    protected void movePlusTen() {
         x += 10;
     }
 
