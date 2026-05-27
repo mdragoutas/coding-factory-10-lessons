@@ -75,9 +75,9 @@ public class Account {
     // Public API - Contract
 
     /**
-     * Used for Depositing an amount of money to the Account's Balance
-     * @param amount        the amount of money to be deposited
-     * @throws NegativeAmountException    if the amount is negative
+     * Used for Depositing an amount of money to the Account's Balance.
+     * @param amount        the amount of money to be deposited.
+     * @throws NegativeAmountException    if the amount is negative.
      */
     public void deposit(double amount) throws NegativeAmountException {
         try {
@@ -93,12 +93,13 @@ public class Account {
     }
 
     /**
-     * Used for withdrawing an amount of money from the Account's Balance
-     * @param amount                        the amount of money to be withdrawn
-     * @param ssn                           the ssn of the user who performs the withdrawal
-     * @throws NegativeAmountException      if the amount is negative
-     * @throws InsufficientBalanceException if the balance is insufficient
-     * @throws SsnInvalidException          if the SSN does not match
+     * Used for withdrawing an amount of money from the Account's Balance.
+     *
+     * @param amount                        the amount of money to be withdrawn.
+     * @param ssn                           the ssn of the user who performs the withdrawal.
+     * @throws NegativeAmountException      if the amount is negative.
+     * @throws InsufficientBalanceException if the balance is insufficient.
+     * @throws SsnInvalidException          if the SSN does not match.
      */
     public void withdraw(double amount, String ssn) throws NegativeAmountException, InsufficientBalanceException, SsnInvalidException {
         try {
@@ -127,9 +128,9 @@ public class Account {
     }
 
     /**
-     * Checks if the SSN of the client is valid
-     * @param ssn        the ssn of the client
-     * @return           true if the ssn is valid, false otherwise
+     * Checks if the SSN of the client is valid.
+     * @param ssn        the ssn of the client.
+     * @return           true if the ssn is valid, false otherwise.
      */
     private boolean isSsnValid(String ssn) {
 //        return this.ssn.equals(ssn);          // not null-safe
