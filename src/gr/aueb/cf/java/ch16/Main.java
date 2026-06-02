@@ -8,5 +8,8 @@ public class Main {
                 .author("Emmanouil")
                 .title("Java Programming")
                 .build();
+        Book javascriptBook = new Book.Builder(3, "C789")
+                .title("JavaScript")
+                .build();
     }
 }
