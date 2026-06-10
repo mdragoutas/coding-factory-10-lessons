@@ -1,11 +1,14 @@
 package gr.aueb.cf.java.ch18.bank_app;
 
+import gr.aueb.cf.java.ch18.bank_app.controller.AccountController;
+import gr.aueb.cf.java.ch18.bank_app.dto.AccountReadOnlyDTO;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
     private final static Scanner scanner = new Scanner(System.in);
-
+    private final static AccountController accountController = new AccountController();
 
     public static void main(String[] args) {
         String option;
@@ -20,14 +23,17 @@ public class Main {
             try {
                 switch (option) {
                     case "1" -> {
-                        System.out.print("Παρακαλώ εισάγετε το IBAN.");
+                        System.out.print("Παρακαλώ εισάγετε το IBAN: ");
                         iban = scanner.next().trim();
-                        System.out.print("Παρακαλώ εισάγετε το αρχικό υπόλοιπο.");
+                        System.out.print("Παρακαλώ εισάγετε το αρχικό υπόλοιπο: ");
                         balance = new BigDecimal(scanner.nextLine().trim());
 
-                        // AccountReadOnlyDTO readOnlyDTO = accountController.createNewAccount(iban, balance);
-
+                        AccountReadOnlyDTO readOnlyDTO = accountController.createNewAccount(iban, balance);
+                        System.out.println("\n Ο λογαριασμός δημιουργήθηκε ή ανανεώθηκε επιτυχώς");
+                        System.out.println("IBAN: " + readOnlyDTO.iban() + ", Υπόλοιπο: " + readOnlyDTO.balance());
                     }
+
+                    default -> System.out.println("\nΜη έγκυρη επιλογή.");
                 }
             }
             catch (Exception e) {
