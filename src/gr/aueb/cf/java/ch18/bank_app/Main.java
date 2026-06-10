@@ -24,7 +24,7 @@ public class Main {
                 switch (option) {
                     case "1" -> {
                         System.out.print("Παρακαλώ εισάγετε το IBAN: ");
-                        iban = scanner.next().trim();
+                        iban = scanner.nextLine().trim();
                         System.out.print("Παρακαλώ εισάγετε το αρχικό υπόλοιπο: ");
                         balance = new BigDecimal(scanner.nextLine().trim());
 
