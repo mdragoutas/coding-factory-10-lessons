@@ -2,6 +2,9 @@ package gr.aueb.cf.java.ch18.bank_app.dto;
 
 import java.math.BigDecimal;
 
+/**
+ * Data Transfer Object (DTO)
+ */
 public record AccountReadOnlyDTO(String iban, BigDecimal balance) {
 
     @Override
