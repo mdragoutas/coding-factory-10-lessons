@@ -32,7 +32,7 @@ public class Main {
 
                         AccountReadOnlyDTO readOnlyDTO = accountController.createNewAccount(iban, balance);
                         System.out.println("\n Ο λογαριασμός δημιουργήθηκε ή ανανεώθηκε επιτυχώς");
-                        System.out.println("IBAN: " + readOnlyDTO.iban() + ", Υπόλοιπο: " + readOnlyDTO.balance());
+                        System.out.println("\nIBAN: " + readOnlyDTO.iban() + ", Υπόλοιπο: " + readOnlyDTO.balance());
                     }
 
                     case "2" -> {
@@ -56,7 +56,7 @@ public class Main {
                         BigDecimal depositAmount =  new BigDecimal(scanner.nextLine().trim());
                         accountController.deposit(iban, depositAmount);
                         System.out.println("\nΕπιτυχής κατάθεση");
-                        System.out.println("Ποσό κατάθεσης: " + depositAmount + ", Νέο Υπόλοιπο: "); //+
+                        System.out.println("\nΠοσό κατάθεσης: " + depositAmount + ", Νέο Υπόλοιπο: "); //+
                                 // account.Controller.getBalance());
                     }
 
@@ -67,7 +67,7 @@ public class Main {
                         BigDecimal withdrawAmount =  new BigDecimal(scanner.nextLine().trim());
                         accountController.withdraw(iban, withdrawAmount);
                         System.out.println("\nΕπιτυχής ανάληψη");
-                        System.out.println("Ποσό ανάληψης: " + withdrawAmount + ", Νέο Υπόλοιπο: "); //+
+                        System.out.println("\nΠοσό ανάληψης: " + withdrawAmount + ", Νέο Υπόλοιπο: "); //+
                                 // account.Controller.getBalance());
                     }
 
