@@ -4,9 +4,11 @@ import gr.aueb.cf.java.ch18.bank_app.controller.AccountController;
 import gr.aueb.cf.java.ch18.bank_app.dto.AccountReadOnlyDTO;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     private final static Scanner scanner = new Scanner(System.in);
     private final static AccountController accountController = new AccountController();
 
@@ -33,6 +35,56 @@ public class Main {
                         System.out.println("IBAN: " + readOnlyDTO.iban() + ", Υπόλοιπο: " + readOnlyDTO.balance());
                     }
 
+                    case "2" -> {
+                        List<AccountReadOnlyDTO> readOnlyDTOS = accountController.getAllAccounts();
+
+                        if (readOnlyDTOS.isEmpty()) {
+                            System.out.println("\nΔεν βρέθηκαν λογαριασμοί.");
+                        } else {
+                            System.out.println("\n-------------------------");
+                            System.out.println("|        Λογαριασμοί       |");
+                            System.out.println("\n-------------------------");
+                            readOnlyDTOS.forEach(System.out::println);
+                            System.out.println();
+                        }
+                    }
+
+                    case "3" -> {
+                        System.out.println("Παρακαλώ εισάγετε το IBAN: ");
+                        iban = scanner.nextLine().trim();
+                        System.out.println("Παρακαλώ εισάγετε το ποσό κατάθεσης: ");
+                        BigDecimal depositAmount =  new BigDecimal(scanner.nextLine().trim());
+                        accountController.deposit(iban, depositAmount);
+                        System.out.println("\nΕπιτυχής κατάθεση");
+                        System.out.println("Ποσό κατάθεσης: " + depositAmount + ", Νέο Υπόλοιπο: "); //+
+                                // account.Controller.getBalance());
+                    }
+
+                    case "4" -> {
+                        System.out.println("Παρακαλώ εισάγετε το IBAN: ");
+                        iban = scanner.nextLine().trim();
+                        System.out.println("Παρακαλώ εισάγετε το ποσό ανάληψης: ");
+                        BigDecimal withdrawAmount =  new BigDecimal(scanner.nextLine().trim());
+                        accountController.withdraw(iban, withdrawAmount);
+                        System.out.println("\nΕπιτυχής ανάληψη");
+                        System.out.println("Ποσό ανάληψης: " + withdrawAmount + ", Νέο Υπόλοιπο: "); //+
+                                // account.Controller.getBalance());
+                    }
+
+                    case "5" -> {
+                        System.out.println("Παρακαλώ εισάγετε το IBAN: ");
+                        iban = scanner.nextLine().trim();
+
+                        balance = accountController.getBalance(iban);
+
+                        System.out.println("\nΥπόλοιπο: " + balance);
+                    }
+
+                    case "Q", "q" -> {
+                        System.out.println("\nΈξοδος...");
+                        scanner.close();
+                        return;
+                    }
                     default -> System.out.println("\nΜη έγκυρη επιλογή.");
                 }
             }
