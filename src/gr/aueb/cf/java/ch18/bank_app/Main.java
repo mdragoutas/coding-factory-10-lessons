@@ -2,6 +2,7 @@ package gr.aueb.cf.java.ch18.bank_app;
 
 import gr.aueb.cf.java.ch18.bank_app.controller.AccountController;
 import gr.aueb.cf.java.ch18.bank_app.dto.AccountReadOnlyDTO;
+import gr.aueb.cf.java.ch18.bank_app.service.IAccountService;
 
 import java.math.BigDecimal;
 import java.util.List;

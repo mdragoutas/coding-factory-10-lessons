@@ -1,34 +1,40 @@
 package gr.aueb.cf.java.ch18.bank_app.controller;
 
+import gr.aueb.cf.java.ch18.bank_app.core.exceptions.ValidationException;
 import gr.aueb.cf.java.ch18.bank_app.dto.AccountInsertDTO;
 import gr.aueb.cf.java.ch18.bank_app.dto.AccountReadOnlyDTO;
 import gr.aueb.cf.java.ch18.bank_app.model.Account;
 import gr.aueb.cf.java.ch18.bank_app.service.IAccountService;
+import gr.aueb.cf.java.ch18.bank_app.validation.Validator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AccountController {
     private final IAccountService accountService;
 
-    public AccountController(IAccountService accountService){
+    public AccountController(IAccountService accountService) throws ValidationException {
         this.accountService = accountService;
     }
 
     public AccountReadOnlyDTO createNewAccount(String iban, BigDecimal balance) {
-
         // Data binding
         AccountInsertDTO insertDTO = new AccountInsertDTO(iban, balance);
         AccountReadOnlyDTO readOnlyDTO;
 
         // 1. Validation
-
+        Map<String, String> errors = Validator.validateInsertDTO(insertDTO);
+        if (!errors.isEmpty()) {
+            throw new ValidationException(errors.toString());
+        }
         // 2. Service Call
-        // readOnlyDTO = accountService.createAccount(insertDTO);
+         readOnlyDTO = accountService.createNewAccount(insertDTO);
 
         // Dummy Data
-        readOnlyDTO = new AccountReadOnlyDTO(iban, balance);
+//        readOnlyDTO = new AccountReadOnlyDTO(iban, balance);
         return readOnlyDTO;
     }
 
