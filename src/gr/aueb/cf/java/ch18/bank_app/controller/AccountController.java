@@ -3,19 +3,23 @@ package gr.aueb.cf.java.ch18.bank_app.controller;
 import gr.aueb.cf.java.ch18.bank_app.dto.AccountInsertDTO;
 import gr.aueb.cf.java.ch18.bank_app.dto.AccountReadOnlyDTO;
 import gr.aueb.cf.java.ch18.bank_app.model.Account;
+import gr.aueb.cf.java.ch18.bank_app.service.IAccountService;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccountController {
+    private final IAccountService accountService;
 
-    // Dummy data
-    //private final List<Account> accounts = new ArrayList<>();
+    public AccountController(IAccountService accountService){
+        this.accountService = accountService;
+    }
 
     public AccountReadOnlyDTO createNewAccount(String iban, BigDecimal balance) {
+
         // Data binding
-        //AccountInsertDTO insertDTO = new AccountInsertDTO(iban, balance);
+        AccountInsertDTO insertDTO = new AccountInsertDTO(iban, balance);
         AccountReadOnlyDTO readOnlyDTO;
 
         // 1. Validation
