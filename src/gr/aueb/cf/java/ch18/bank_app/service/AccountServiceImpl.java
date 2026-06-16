@@ -76,11 +76,20 @@ public class AccountServiceImpl implements IAccountService{
 
     @Override
     public BigDecimal getBalance(String iban) throws AccountNotFoundException {
-        return null;
+        try{
+            Account account = accountDAO.findByIban(iban)
+                    .orElseThrow(() -> new AccountNotFoundException("Account not found."));
+            return account.getBalance();
+        } catch (AccountNotFoundException e) {
+            System.err.printf("%s. Account with IBAN %s not found.\n", LocalDateTime.now() ,iban);
+            throw e;
+        }
     }
 
     @Override
     public List<AccountReadOnlyDTO> getAllAccounts() {
-        return List.of();
+        return accountDAO.findAll().stream()
+                .map(Mapper::mapToReadOnlyDTO)
+                .toList();
     }
 }
