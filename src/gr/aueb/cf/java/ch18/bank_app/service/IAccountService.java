@@ -1,5 +1,6 @@
 package gr.aueb.cf.java.ch18.bank_app.service;
 
+import gr.aueb.cf.java.ch18.bank_app.core.exceptions.AccountAlreadyExistsException;
 import gr.aueb.cf.java.ch18.bank_app.core.exceptions.AccountNotFoundException;
 import gr.aueb.cf.java.ch18.bank_app.core.exceptions.InsufficientBalanceException;
 import gr.aueb.cf.java.ch18.bank_app.core.exceptions.NegativeAmountException;
@@ -13,7 +14,9 @@ import java.util.List;
 
 public interface IAccountService {
 
-    AccountReadOnlyDTO createNewAccount(AccountInsertDTO accountInsertDTO);
+    // Αν κάναμε μόνο
+    AccountReadOnlyDTO createNewAccount(AccountInsertDTO accountInsertDTO)
+            throws NegativeAmountException; //, AccountAlreadyExistsException;
     void deposit(AccountDepositDTO accountDepositDTO) throws AccountNotFoundException, NegativeAmountException;
     void withdraw(AccountWithdrawDTO accountWithdrawDTO) throws AccountNotFoundException, InsufficientBalanceException;
     BigDecimal getBalance(String iban) throws AccountNotFoundException;
