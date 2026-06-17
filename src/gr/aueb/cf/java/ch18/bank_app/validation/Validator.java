@@ -12,6 +12,8 @@ public class Validator {
 
     private Validator() {}
 
+    // TODO: Split validation from business rules
+
     public static Map<String, String> validateInsertDTO(AccountInsertDTO insertDTO) {
         Map<String, String> errors = new HashMap<>();
 
@@ -47,12 +49,25 @@ public class Validator {
             errors.put("iban", "Το IBAN πρέπει να ξεκινάει απο GR και να ακολουθείται απο 5-10 ψηφία.");
         }
 
-//        if (withdrawDTO.amount() == null || withdrawDTO.amount().compareTo(BigDecimal.ZERO) < 0) {
-//            errors.put("amount", "Το υπόλοιπο δεν μπορεί να είναι null ή αρνητικό.");
-//        }
+        return  errors;
+    }
+
+    public static Map<String, String> validateWithdrawBalance(AccountWithdrawDTO withdrawDTO, BigDecimal balance) {
+        Map<String, String> errors = new HashMap<>();
+
+        if (withdrawDTO.amount() == null || withdrawDTO.amount().compareTo(balance) > 0) {
+            errors.put("amount", "Το υπόλοιπο δεν επαρκεί.");
+        }
 
         return  errors;
     }
 
-    // TODO: Check if balance is not sufficient for withdrawal
+    public static Map<String, String> validateIban(String iban) {
+        Map<String, String> errors = new HashMap<>();
+
+        if (iban == null || iban.trim().matches("GR\\d{5,10}")) {
+            errors.put("iban" , "Το IBAN πρεέπει να ξεκινάει από GR και να ακολοθείται απο 5-10 ψηφία΄.");
+        }
+        return  errors;
+    }
 }
