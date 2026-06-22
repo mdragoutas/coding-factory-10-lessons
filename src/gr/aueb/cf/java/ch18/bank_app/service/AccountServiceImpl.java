@@ -104,7 +104,8 @@ public class AccountServiceImpl implements IAccountService{
 
     @Override
     public List<AccountReadOnlyDTO> getAllAccounts() {
-        return accountDAO.findAll().stream()
+        return accountDAO.findAll()
+                .stream()
                 .map(Mapper::mapToReadOnlyDTO)
                 .toList();
     }
