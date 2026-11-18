@@ -12,14 +12,9 @@ public interface IAccountDAO {
 
     //-- Contract - CRUD API --
     Account saveOrUpdate(Account account);
-
     void remove(String iban);
-
-
     Optional<Account> findByIban(String iban);          // Get One
-
     List<Account> findAll();                            // Get All
-
     long count();
 
     // Queries
