@@ -65,8 +65,8 @@ public class Validator {
     public static Map<String, String> validateIban(String iban) {
         Map<String, String> errors = new HashMap<>();
 
-        if (iban == null || iban.trim().matches("GR\\d{5,10}")) {
-            errors.put("iban" , "Το IBAN πρεέπει να ξεκινάει από GR και να ακολοθείται απο 5-10 ψηφία΄.");
+        if (iban == null || !iban.trim().matches("GR\\d{5,10}")) {
+            errors.put("iban" , "Το IBAN πρέπει να ξεκινάει από GR και να ακολουθείται απο 5-10 ψηφία΄.");
         }
         return  errors;
     }
